@@ -1,6 +1,8 @@
+using LichaoDuan.ClientInformationSystem.Infrastrcture.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -31,6 +33,8 @@ namespace LichaoDuan.ClientInformationSystem.API
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "LichaoDuan.ClientInformationSystem.API", Version = "v1" });
             });
+            services.AddDbContext<ClientInformationSystemDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString(("ClientInformationSystemDbConnection"))));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
