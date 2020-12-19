@@ -1,4 +1,8 @@
+using LichaoDuan.ClientInformationSystem.Core.RepositoryInterfaces;
+using LichaoDuan.ClientInformationSystem.Core.ServiceInterfaces;
 using LichaoDuan.ClientInformationSystem.Infrastrcture.Data;
+using LichaoDuan.ClientInformationSystem.Infrastrcture.Data.Repositories;
+using LichaoDuan.ClientInformationSystem.Infrastrcture.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -35,6 +39,8 @@ namespace LichaoDuan.ClientInformationSystem.API
             });
             services.AddDbContext<ClientInformationSystemDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString(("ClientInformationSystemDbConnection"))));
+            services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+            services.AddScoped<IEmployeeService, EmployeeService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

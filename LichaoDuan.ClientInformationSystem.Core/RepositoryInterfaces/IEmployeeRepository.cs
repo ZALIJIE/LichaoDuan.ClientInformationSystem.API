@@ -9,5 +9,6 @@ namespace LichaoDuan.ClientInformationSystem.Core.RepositoryInterfaces
     public interface IEmployeeRepository:IAsyncRepository<Employee>
     {
         Task<Interaction> GetInteractionByEmployeeId(int id);
+        Task<Client> GetClientByEmployeeId(int id);
     }
 }

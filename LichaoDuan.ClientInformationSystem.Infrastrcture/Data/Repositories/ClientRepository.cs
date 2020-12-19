@@ -15,9 +15,10 @@ namespace LichaoDuan.ClientInformationSystem.Infrastrcture.Data.Repositories
 
         }
 
-        public Task<Employee> GetEmployeeByClientId(int id)
+        public async Task<Employee> GetEmployeeByClientId(int id)
         {
-            throw new NotImplementedException();
+            var emp = await _clientInformationSystemDbContext.Employees.Include(e => e.Interaction).ThenInclude(i => i.Client).FirstOrDefaultAsync(e => e.Id == id);
+            return emp;
         }
 
 

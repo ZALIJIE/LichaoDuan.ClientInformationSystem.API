@@ -15,10 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\LichaoDuan.ClientInformationSystem.Core\LichaoDuan.ClientInformationSystem.Core.csproj" />
     <ProjectReference Include="..\LichaoDuan.ClientInformationSystem.Infrastrcture\LichaoDuan.ClientInformationSystem.Infrastrcture.csproj" />
   </ItemGroup>
