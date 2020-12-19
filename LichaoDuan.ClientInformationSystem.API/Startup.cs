@@ -41,6 +41,8 @@ namespace LichaoDuan.ClientInformationSystem.API
                 options.UseSqlServer(Configuration.GetConnectionString(("ClientInformationSystemDbConnection"))));
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
             services.AddScoped<IEmployeeService, EmployeeService>();
+            services.AddScoped<IClientRepository, ClientRepository>();
+            services.AddScoped<IClientService, ClientService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

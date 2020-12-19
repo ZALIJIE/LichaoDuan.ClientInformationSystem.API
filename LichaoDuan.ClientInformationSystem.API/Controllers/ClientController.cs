@@ -10,19 +10,19 @@ namespace LichaoDuan.ClientInformationSystem.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class EmployeeController : ControllerBase
+    public class ClientController : ControllerBase
     {
-        private readonly IEmployeeService _employeeService;
-
-        public EmployeeController(IEmployeeService EmployeeService)
+        private readonly IClientService _clientServie;
+        public ClientController(IClientService ClientService)
         {
-            _employeeService = EmployeeService;
+            _clientServie = ClientService;
         }
+
         [HttpGet]
         [Route("{id:int}")]
-        public async Task<ActionResult> GetEmployeeInteractions(int id)
+        public async Task<ActionResult> GetClientInteraction(int id)
         {
-            var interaction = await _employeeService.GetInteractionInfo(id);
+            var interaction =await _clientServie.GetInteractionInfo(id);
             return Ok(interaction);
         }
     }
