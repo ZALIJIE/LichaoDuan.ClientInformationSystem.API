@@ -9,6 +9,7 @@ namespace LichaoDuan.ClientInformationSystem.Core.ServiceInterfaces
     public interface IClientService
     {
         Task<ClientInteractionResponseModel> GetInteractionInfo(int id);
+        Task<IEnumerable<ClientResponseModel>> GetAllClients();
 
     }
 }

@@ -43,6 +43,8 @@ namespace LichaoDuan.ClientInformationSystem.API
             services.AddScoped<IEmployeeService, EmployeeService>();
             services.AddScoped<IClientRepository, ClientRepository>();
             services.AddScoped<IClientService, ClientService>();
+            services.AddScoped<IInterationRepository, InteractionRepository>();
+            services.AddScoped<IInteractionService, InteractionService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,6 +56,13 @@ namespace LichaoDuan.ClientInformationSystem.API
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "LichaoDuan.ClientInformationSystem.API v1"));
             }
+
+            app.UseCors(builder =>
+            {
+                builder.WithOrigins(Configuration.GetValue<string>("clientSPAUrl")).AllowAnyHeader()
+                    .AllowAnyMethod()
+                    .AllowCredentials();
+            });
 
             app.UseRouting();
 

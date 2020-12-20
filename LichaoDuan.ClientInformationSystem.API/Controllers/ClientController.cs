@@ -25,5 +25,12 @@ namespace LichaoDuan.ClientInformationSystem.API.Controllers
             var interaction =await _clientServie.GetInteractionInfo(id);
             return Ok(interaction);
         }
+        [HttpGet]
+        [Route("")]
+        public async Task<ActionResult> GetAllEmployees()
+        {
+            var clients = await _clientServie.GetAllClients();
+            return Ok(clients);
+        }
     }
 }

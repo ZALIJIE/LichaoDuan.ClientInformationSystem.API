@@ -8,7 +8,8 @@ namespace LichaoDuan.ClientInformationSystem.Core.RepositoryInterfaces
 {
     public interface IClientRepository:IAsyncRepository<Client>
     {
-        Task<Interaction> GetInteractionByClientId(int id);
+        Task<IEnumerable<Interaction>> GetInteractionByClientId(int id);
+        Task<IEnumerable<int>> GetInteractionIdByClientId(int id);
         Task<Employee> GetEmployeeByClientId(int id);
     }
 }

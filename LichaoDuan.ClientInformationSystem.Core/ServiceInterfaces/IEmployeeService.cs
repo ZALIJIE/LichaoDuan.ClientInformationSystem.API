@@ -9,5 +9,7 @@ namespace LichaoDuan.ClientInformationSystem.Core.ServiceInterfaces
     public interface IEmployeeService
     {
         Task<EmployeeIteractionResponseModel> GetInteractionInfo(int id);
+        Task<IEnumerable<EmployeeResponseModel>> GetAllEmployees();
+
     }
 }

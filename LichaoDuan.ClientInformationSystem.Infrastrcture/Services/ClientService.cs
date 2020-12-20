@@ -16,22 +16,44 @@ namespace LichaoDuan.ClientInformationSystem.Infrastrcture.Services
             _clientRepository = ClientRepository;
         }
 
-        public async Task<ClientInteractionResponseModel> GetInteractionInfo(int id)
+        //public async Task<ClientInteractionResponseModel> GetInteractionInfo(int id)
+        //{
+        //    var interaction = await _clientRepository.GetInteractionByClientId(id);
+        //    var EmpInfo = await _clientRepository.GetEmployeeByClientId(id);
+        //    var response = new ClientInteractionResponseModel
+        //    {
+        //        Id = interaction.Id,
+        //        IntType = interaction.IntType,
+        //        IntDate = interaction.IntDate,
+        //        Remarks = interaction.Remarks,
+        //        EmpInfo = new EmployeeResponseModel()
+        //    };
+        //    response.EmpInfo.Id = EmpInfo.Id;
+        //    response.EmpInfo.EmpName = EmpInfo.Name;
+        //    response.EmpInfo.Designation = EmpInfo.Designation;
+        //    return response;
+        //}
+
+        public async Task<IEnumerable<ClientResponseModel>> GetAllClients()
         {
-            var interaction = await _clientRepository.GetInteractionByClientId(id);
-            var EmpInfo = await _clientRepository.GetEmployeeByClientId(id);
-            var response = new ClientInteractionResponseModel
+            var clients = await _clientRepository.ListAllAsync();
+            var response = new List<ClientResponseModel>();
+            foreach (var client in clients)
             {
-                Id = interaction.Id,
-                IntType = interaction.IntType,
-                IntDate = interaction.IntDate,
-                Remarks = interaction.Remarks,
-                EmpInfo = new EmployeeResponseModel()
-            };
-            response.EmpInfo.Id = EmpInfo.Id;
-            response.EmpInfo.EmpName = EmpInfo.Name;
-            response.EmpInfo.Designation = EmpInfo.Designation;
+                response.Add(new ClientResponseModel
+                {
+                    ClientId=client.Id,
+                    ClientName=client.Name,
+                    ClientPhone=client.Phones,
+                    ClientAddress=client.Address
+                });
+            }
             return response;
+        }
+
+        public Task<ClientInteractionResponseModel> GetInteractionInfo(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

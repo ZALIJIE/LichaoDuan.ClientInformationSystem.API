@@ -3,6 +3,7 @@ using LichaoDuan.ClientInformationSystem.Core.RepositoryInterfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -21,12 +22,30 @@ namespace LichaoDuan.ClientInformationSystem.Infrastrcture.Data.Repositories
             return emp;
         }
 
-
-
-        public async Task<Interaction> GetInteractionByClientId(int id)
+        public async Task<IEnumerable<Interaction>> GetInteractionByClientId(int id)
         {
-            var iteraction = await _clientInformationSystemDbContext.Interactions.FirstOrDefaultAsync(i => i.ClientId == id);
-            return iteraction;
+            var iteractions = await _clientInformationSystemDbContext.Interactions.Where(i => i.ClientId==id)
+                .Include(i => i.Client)
+                .Select(i => new Interaction
+                {
+                    Id=i.Id,
+                    ClientId=i.ClientId,
+                    EmployeeId=i.EmployeeId,
+                    IntType=i.IntType,
+                    IntDate=i.IntDate,
+                    Remarks=i.Remarks
+                })
+                .ToListAsync();
+            return iteractions;
+        }
+
+        public async Task<IEnumerable<int>> GetInteractionIdByClientId(int id)
+        {
+            var interactionId = await _clientInformationSystemDbContext.Interactions.Where(i => i.ClientId == id)
+                .Include(i => i.Client)
+                .Select(i=>i.Id)
+                .ToListAsync();
+            return interactionId;
         }
     }
 }
