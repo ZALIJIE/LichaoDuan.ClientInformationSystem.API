@@ -49,7 +49,7 @@ namespace LichaoDuan.ClientInformationSystem.API.Controllers
         public async Task<ActionResult> UpdateEmployee(CreateEmployeeRequestModel requestModel)
         {
             var response = await _employeeService.UpdateEmployee(requestModel);
-            return Ok(new { message = "Client updated succeed" });
+            return Ok(new { message = "Employee updated succeed" });
         }
 
         [HttpDelete]
