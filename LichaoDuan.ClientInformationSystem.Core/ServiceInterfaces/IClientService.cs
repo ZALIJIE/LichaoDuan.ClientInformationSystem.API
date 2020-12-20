@@ -1,4 +1,5 @@
-﻿using LichaoDuan.ClientInformationSystem.Core.Models.Response;
+﻿using LichaoDuan.ClientInformationSystem.Core.Models.Request;
+using LichaoDuan.ClientInformationSystem.Core.Models.Response;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -10,6 +11,8 @@ namespace LichaoDuan.ClientInformationSystem.Core.ServiceInterfaces
     {
         Task<ClientInteractionResponseModel> GetInteractionInfo(int id);
         Task<IEnumerable<ClientResponseModel>> GetAllClients();
-
+        Task<CreateClientRequestModel> CreateClient(CreateClientRequestModel requestModel);
+        Task<CreateClientRequestModel> UpdateClient(CreateClientRequestModel requestModel);
+        Task DeleteClient(CreateClientRequestModel requestModel);
     }
 }

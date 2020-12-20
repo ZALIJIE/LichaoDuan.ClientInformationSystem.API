@@ -13,7 +13,8 @@ namespace LichaoDuan.ClientInformationSystem.Core.Entities
         public string Email { get; set; }
         public string Phones { get; set; }
         public string Address { get; set; }
-        public DateTime AddedOn { get; set; }
+        public DateTime? AddedOn { get; set; }
         public List<Interaction> Interaction { get; set; }
+
     }
 }

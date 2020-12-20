@@ -1,3 +1,4 @@
+using LichaoDuan.ClientInformationSystem.Core.Entities;
 using LichaoDuan.ClientInformationSystem.Core.RepositoryInterfaces;
 using LichaoDuan.ClientInformationSystem.Core.ServiceInterfaces;
 using LichaoDuan.ClientInformationSystem.Infrastrcture.Data;
@@ -45,6 +46,10 @@ namespace LichaoDuan.ClientInformationSystem.API
             services.AddScoped<IClientService, ClientService>();
             services.AddScoped<IInterationRepository, InteractionRepository>();
             services.AddScoped<IInteractionService, InteractionService>();
+            services.AddScoped<IAsyncRepository<Employee>, EfRepository<Employee>>();
+            services.AddScoped<IAsyncRepository<Client>, EfRepository<Client>>();
+            services.AddScoped<IAsyncRepository<Interaction>, EfRepository<Interaction>>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

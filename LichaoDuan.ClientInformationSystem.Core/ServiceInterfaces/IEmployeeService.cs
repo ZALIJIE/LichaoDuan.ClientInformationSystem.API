@@ -1,4 +1,5 @@
-﻿using LichaoDuan.ClientInformationSystem.Core.Models.Response;
+﻿using LichaoDuan.ClientInformationSystem.Core.Models.Request;
+using LichaoDuan.ClientInformationSystem.Core.Models.Response;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -10,6 +11,9 @@ namespace LichaoDuan.ClientInformationSystem.Core.ServiceInterfaces
     {
         Task<EmployeeIteractionResponseModel> GetInteractionInfo(int id);
         Task<IEnumerable<EmployeeResponseModel>> GetAllEmployees();
+        Task<CreateEmployeeRequestModel> CreateEmployee(CreateEmployeeRequestModel requestModel);
+        Task<CreateEmployeeRequestModel> UpdateEmployee(CreateEmployeeRequestModel requestModel);
+        Task DeleteEmployee(CreateEmployeeRequestModel requestModel);
 
     }
 }

@@ -1,4 +1,5 @@
-﻿using LichaoDuan.ClientInformationSystem.Core.ServiceInterfaces;
+﻿using LichaoDuan.ClientInformationSystem.Core.Models.Request;
+using LichaoDuan.ClientInformationSystem.Core.ServiceInterfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -40,6 +41,14 @@ namespace LichaoDuan.ClientInformationSystem.API.Controllers
         {
             var interaction = await _interactionService.GetInteractionsInfoByClientId(clientId);
             return Ok(interaction);
+        }
+
+        [HttpPost]
+        [Route("create")]
+        public async Task<IActionResult> CreateInteraction(CreateInteractionRequestModel requestModel)
+        {
+            var response = await _interactionService.CreateInteraction(requestModel);
+            return Ok(new { message = "Employee created succeed" });
         }
     }
 }

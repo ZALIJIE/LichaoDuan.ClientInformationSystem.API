@@ -4,14 +4,16 @@ using LichaoDuan.ClientInformationSystem.Infrastrcture.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LichaoDuan.ClientInformationSystem.Infrastrcture.Migrations
 {
     [DbContext(typeof(ClientInformationSystemDbContext))]
-    partial class ClientInformationSystemDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201220080441_updateClientTable")]
+    partial class updateClientTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

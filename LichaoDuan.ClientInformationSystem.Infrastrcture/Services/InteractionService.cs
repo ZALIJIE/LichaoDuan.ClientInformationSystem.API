@@ -1,4 +1,6 @@
-﻿using LichaoDuan.ClientInformationSystem.Core.Models.Response;
+﻿using LichaoDuan.ClientInformationSystem.Core.Entities;
+using LichaoDuan.ClientInformationSystem.Core.Models.Request;
+using LichaoDuan.ClientInformationSystem.Core.Models.Response;
 using LichaoDuan.ClientInformationSystem.Core.RepositoryInterfaces;
 using LichaoDuan.ClientInformationSystem.Core.ServiceInterfaces;
 using System;
@@ -79,6 +81,17 @@ namespace LichaoDuan.ClientInformationSystem.Infrastrcture.Services
             return responses;
         }
 
-
+        public async Task<CreateInteractionRequestModel> CreateInteraction(CreateInteractionRequestModel requestModel)
+        {
+            var interaction = new Interaction { 
+                ClientId=requestModel.ClientId,
+                EmployeeId=requestModel.EmployeeId,
+                IntType=requestModel.IntType,
+                IntDate=requestModel.IntDate,
+                Remarks=requestModel.Remarks
+            };
+            var response = await _interactionRepository.AddAsync(interaction);
+            return requestModel;
+        }
     }
 }

@@ -1,4 +1,6 @@
-﻿using LichaoDuan.ClientInformationSystem.Core.Models.Response;
+﻿using LichaoDuan.ClientInformationSystem.Core.Entities;
+using LichaoDuan.ClientInformationSystem.Core.Models.Request;
+using LichaoDuan.ClientInformationSystem.Core.Models.Response;
 using LichaoDuan.ClientInformationSystem.Core.RepositoryInterfaces;
 using LichaoDuan.ClientInformationSystem.Core.ServiceInterfaces;
 using System;
@@ -14,6 +16,18 @@ namespace LichaoDuan.ClientInformationSystem.Infrastrcture.Services
         public ClientService(IClientRepository ClientRepository)
         {
             _clientRepository = ClientRepository;
+        }
+
+        public async Task<CreateClientRequestModel> CreateClient(CreateClientRequestModel requestModel)
+        {
+            var client = new Client { 
+                Name=requestModel.Name,
+                Email=requestModel.Email,
+                Phones=requestModel.Phone,
+                Address=requestModel.Address
+            };
+            var response = await _clientRepository.AddAsync(client);
+            return requestModel;
         }
 
         //public async Task<ClientInteractionResponseModel> GetInteractionInfo(int id)
@@ -54,6 +68,31 @@ namespace LichaoDuan.ClientInformationSystem.Infrastrcture.Services
         public Task<ClientInteractionResponseModel> GetInteractionInfo(int id)
         {
             throw new NotImplementedException();
+        }
+
+        public async Task<CreateClientRequestModel> UpdateClient(CreateClientRequestModel requestModel)
+        {
+            var client = new Client
+            {
+                Name = requestModel.Name,
+                Email = requestModel.Email,
+                Phones = requestModel.Phone,
+                Address = requestModel.Address
+            };
+            var updated =await  _clientRepository.UpdateAsync(client);
+            return requestModel;
+        }
+
+        public async Task DeleteClient(CreateClientRequestModel requestModel)
+        {
+            var client = new Client
+            {
+                Name = requestModel.Name,
+                Email = requestModel.Email,
+                Phones = requestModel.Phone,
+                Address = requestModel.Address
+            };
+            await _clientRepository.DeleteAsync(client);
         }
     }
 }

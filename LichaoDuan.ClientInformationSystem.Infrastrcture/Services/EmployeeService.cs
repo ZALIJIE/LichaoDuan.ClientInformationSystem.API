@@ -1,4 +1,6 @@
-﻿using LichaoDuan.ClientInformationSystem.Core.Models.Response;
+﻿using LichaoDuan.ClientInformationSystem.Core.Entities;
+using LichaoDuan.ClientInformationSystem.Core.Models.Request;
+using LichaoDuan.ClientInformationSystem.Core.Models.Response;
 using LichaoDuan.ClientInformationSystem.Core.RepositoryInterfaces;
 using LichaoDuan.ClientInformationSystem.Core.ServiceInterfaces;
 using System;
@@ -55,6 +57,41 @@ namespace LichaoDuan.ClientInformationSystem.Infrastrcture.Services
         public Task<EmployeeIteractionResponseModel> GetInteractionInfo(int id)
         {
             throw new NotImplementedException();
+        }
+
+        public async Task<CreateEmployeeRequestModel> CreateEmployee(CreateEmployeeRequestModel requestModel)
+        {
+            var employee = new Employee
+            {
+                Name = requestModel.Name,
+                Password = requestModel.Password,
+                Designation = requestModel.Designation
+            };
+            var returnedEmployee=await _employeeRepository.AddAsync(employee);
+            return requestModel;
+        }
+
+        public async Task<CreateEmployeeRequestModel> UpdateEmployee(CreateEmployeeRequestModel requestModel)
+        {
+            var employee = new Employee
+            {
+                Name = requestModel.Name,
+                Password = requestModel.Password,
+                Designation = requestModel.Designation
+            };
+            var returnedEmployee=await _employeeRepository.UpdateAsync(employee);
+            return requestModel;
+        }
+
+        public async Task DeleteEmployee(CreateEmployeeRequestModel requestModel)
+        {
+            var employee = new Employee
+            {
+                Name = requestModel.Name,
+                Password = requestModel.Password,
+                Designation = requestModel.Designation
+            };
+            await _employeeRepository.DeleteAsync(employee);
         }
     }
 }
