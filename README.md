@@ -8,4 +8,4 @@ You can find two buttons on home page, you will be directed to either employee l
 This is where you can make table manipulation. For example, when you click on the Employee's dropbox, there are three options you can choose from. Pick either add a new employee object, or delete the object.
   
 -Interaction table.
-In order to go to the interaction table, you need to either click on employee's name or client's name. Then, it will automatically select all interaction information where information.employeeId==employeeId or information.clientId==clientId. Here, you can also find more detailed information that are hidden in the first place such as 'Client Email', 'Client Phone', and even 'Interview data'.
+In order to go to the interaction table, you need to either click on employee's name or client's name. Then, it will automatically select all interaction information where information.employeeId==employeeId or information.clientId==clientId. Here, you can also find more detailed information that are hidden in the first place such as 'Client Email', 'Client Phone', and 'Interview data'.
