@@ -2,7 +2,7 @@
 The Client information system is designed to manage both employees' and clients' information properly.
 
 -Home Page.
-You can find two buttons on home page, you will be directed to either employee list or client list when you click on the button.
+You can find two buttons on the home page, you will be directed to either employee list or client list when you click on the button.
   
 -Navigation bar.
 This is where you can make table manipulation. For example, when you click on the Employee's dropbox, there are three options you can choose from. Pick either add a new employee object, or delete the object.
